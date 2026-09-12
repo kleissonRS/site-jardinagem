@@ -4,7 +4,12 @@ const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const DATA_FILE = path.join(__dirname, 'data', 'orcamentos.json');
+
+// Na Vercel, apenas a pasta /tmp tem permissão de escrita. 
+const isProduction = process.env.NODE_ENV === 'production' || process.env.VERCEL;
+const DATA_FILE = isProduction 
+    ? path.join('/tmp', 'orcamentos.json') 
+    : path.join(__dirname, 'data', 'orcamentos.json');
 
 // Middleware
 app.use(express.json());
