@@ -615,11 +615,49 @@
         </div>
     </footer>
 
+    <!-- Barra de Urgência Fixa no Topo -->
+    <div class="urgency-bar" id="urgency-bar">
+        <div class="container">
+            <p><i class="fa-solid fa-fire"></i> <strong>OFERTA DE SETEMBRO:</strong> Orçamento grátis + 15% OFF no primeiro serviço! Válido por tempo limitado <span id="countdown-timer"></span> <a href="#orcamento" class="urgency-cta">QUERO APROVEITAR →</a></p>
+        </div>
+        <button class="urgency-close" onclick="document.getElementById('urgency-bar').style.display='none'" aria-label="Fechar">&times;</button>
+    </div>
+
+    <!-- Popup de Oferta (aparece após 8 segundos) -->
+    <div class="promo-overlay" id="promo-popup">
+        <div class="promo-card">
+            <button class="promo-close" onclick="fecharPromoPopup()" aria-label="Fechar">&times;</button>
+            <div class="promo-icon"><i class="fa-solid fa-gift"></i></div>
+            <h3>🌿 Oferta Exclusiva!</h3>
+            <p class="promo-destaque">15% OFF no seu primeiro serviço</p>
+            <p>Solicite agora mesmo o seu orçamento gratuito e garanta essa condição especial para Florianópolis e região!</p>
+            <div class="promo-timer">
+                <span>Oferta expira em: </span>
+                <strong id="promo-countdown">14:59</strong>
+            </div>
+            <a href="https://wa.me/5548988678616?text=Ol%C3%A1!%20Vi%20a%20oferta%20de%2015%25%20OFF%20no%20site%20e%20quero%20aproveitar!%20Pode%20me%20passar%20um%20or%C3%A7amento%3F" target="_blank" class="btn-primary btn-block btn-glow promo-btn">
+                <i class="fa-brands fa-whatsapp"></i> Garantir Meu Desconto Agora
+            </a>
+            <small>Sem compromisso. Atendimento imediato.</small>
+        </div>
+    </div>
+
     <!-- Botão WhatsApp Flutuante com Pulsar -->
     <a href="https://wa.me/5548988678616?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" class="whatsapp-float" aria-label="Falar no WhatsApp">
         <i class="fa-brands fa-whatsapp"></i>
         <span class="wa-badge">1</span>
     </a>
+
+    <!-- Google Ads Conversion Tracking (Cole seu ID do Google Ads aqui) -->
+    <!-- 
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-SEU_ID_AQUI"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'AW-SEU_ID_AQUI');
+    </script>
+    -->
 
     <script src="script.js"></script>
 </body>

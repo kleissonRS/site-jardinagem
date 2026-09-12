@@ -224,4 +224,87 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Calcular primeira estimativa ao carregar
     calcularEstimativa();
+
+    // ======================================================================
+    // 9. POPUP PROMOCIONAL COM TIMER (Aparece após 8 segundos)
+    // ======================================================================
+    let promoShown = false;
+    let promoCountdownInterval = null;
+
+    function mostrarPromoPopup() {
+        if (promoShown) return;
+        promoShown = true;
+        const popup = document.getElementById('promo-popup');
+        if (popup) popup.classList.add('active');
+        iniciarPromoCountdown();
+    }
+
+    window.fecharPromoPopup = function() {
+        const popup = document.getElementById('promo-popup');
+        if (popup) popup.classList.remove('active');
+        if (promoCountdownInterval) clearInterval(promoCountdownInterval);
+    };
+
+    // Timer: Popup aparece após 8 segundos na página
+    setTimeout(() => {
+        mostrarPromoPopup();
+    }, 8000);
+
+    // Exit Intent: Se o mouse sair da página (desktop), mostrar popup
+    document.addEventListener('mouseleave', function(e) {
+        if (e.clientY <= 0) {
+            mostrarPromoPopup();
+        }
+    });
+
+    // Countdown regressivo do popup (15 minutos fake de urgência)
+    function iniciarPromoCountdown() {
+        let totalSeconds = 15 * 60; // 15 minutos
+        const countdownEl = document.getElementById('promo-countdown');
+        if (!countdownEl) return;
+
+        promoCountdownInterval = setInterval(() => {
+            totalSeconds--;
+            if (totalSeconds <= 0) {
+                clearInterval(promoCountdownInterval);
+                countdownEl.innerText = '00:00';
+                return;
+            }
+            const min = Math.floor(totalSeconds / 60).toString().padStart(2, '0');
+            const sec = (totalSeconds % 60).toString().padStart(2, '0');
+            countdownEl.innerText = `${min}:${sec}`;
+        }, 1000);
+    }
+
+    // ======================================================================
+    // 10. BARRA DE URGÊNCIA - COUNTDOWN DIÁRIO
+    // ======================================================================
+    function iniciarCountdownBarra() {
+        const timerEl = document.getElementById('countdown-timer');
+        if (!timerEl) return;
+
+        // Conta regressiva até meia-noite (fim do dia)
+        function updateTimer() {
+            const agora = new Date();
+            const meiaNoite = new Date();
+            meiaNoite.setHours(23, 59, 59, 0);
+            const diff = meiaNoite - agora;
+
+            if (diff <= 0) {
+                timerEl.innerText = '⏰ Últimos minutos!';
+                return;
+            }
+
+            const h = Math.floor(diff / 3600000).toString().padStart(2, '0');
+            const m = Math.floor((diff % 3600000) / 60000).toString().padStart(2, '0');
+            const s = Math.floor((diff % 60000) / 1000).toString().padStart(2, '0');
+            timerEl.innerText = `⏰ ${h}:${m}:${s}`;
+        }
+
+        updateTimer();
+        setInterval(updateTimer, 1000);
+    }
+
+    iniciarCountdownBarra();
+
 });
