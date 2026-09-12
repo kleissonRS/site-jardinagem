@@ -41,6 +41,7 @@ body {
     background-color: var(--bg-white);
     line-height: 1.6;
     overflow-x: hidden;
+    padding-top: 42px; /* Espaço para a barra de urgência */
 }
 
 h1, h2, h3, h4 {
@@ -115,7 +116,7 @@ img {
 /* Header & Navbar */
 header {
     position: fixed;
-    top: 0;
+    top: 42px; /* Abaixo da barra de urgência */
     left: 0;
     width: 100%;
     z-index: 1000;
@@ -1426,9 +1427,6 @@ input:focus, select:focus, textarea:focus {
 }
 
 /* Ajustar header para não ficar atrás da barra */
-#navbar {
-    top: 42px !important;
-}
 
 /* ==========================================================================
    POPUP PROMOCIONAL
