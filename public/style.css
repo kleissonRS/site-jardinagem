@@ -1426,8 +1426,6 @@ input:focus, select:focus, textarea:focus {
     opacity: 1;
 }
 
-/* Ajustar header para não ficar atrás da barra */
-
 /* ==========================================================================
    POPUP PROMOCIONAL
    ========================================================================== */
@@ -1562,8 +1560,13 @@ input:focus, select:focus, textarea:focus {
         padding: 3px 10px;
     }
 
-    #navbar {
-        top: 55px !important;
+    /* Correção da barra sobrepondo o menu no celular */
+    header {
+        top: 110px !important; 
+    }
+
+    body {
+        padding-top: 110px; 
     }
 
     .promo-card {
