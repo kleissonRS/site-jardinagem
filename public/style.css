@@ -115,7 +115,7 @@ img {
 
 /* Header & Navbar */
 header {
-    position: fixed;
+    position: absolute; /* Alterado de fixed para absolute */
     top: 42px; /* Abaixo da barra de urgência */
     left: 0;
     width: 100%;
@@ -1348,7 +1348,7 @@ input:focus, select:focus, textarea:focus {
    BARRA DE URGÊNCIA (TOPO)
    ========================================================================== */
 .urgency-bar {
-    position: fixed;
+    position: absolute; /* Alterado de fixed para absolute */
     top: 0;
     left: 0;
     right: 0;
